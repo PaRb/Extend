@@ -9,6 +9,9 @@ export default class App extends React.Component {
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>
       </View>
+
+      //FlatList pour liste de contacts (ou Sectionlist)
+      //data qu'on veut: Prénom + Nom, repas, description
     );
   }
 }
