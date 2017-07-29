@@ -63,6 +63,15 @@ export const addContactToMeal = (contactId, mealNo) =>
       }),
     );
 
+export const removeContactFromMeal = (contactId, mealNo) =>
+  getMealGroups()
+    .then(result => result.find(meal => meal.name === '#' + mealNo))
+    .then(meal =>
+      mailchimp.patch('/lists/' + MAIN_LIST_ID + '/members/' + contactId, {
+        interests: { [meal.id]: false },
+      }),
+    );
+
 /**
  * addContact - Adds a contact to the main list
  *
@@ -82,7 +91,11 @@ export const addContact = contact =>
     })
     .then(prettyUser);
 
-// export const modifyContact = contactId =>
-//   mailchimp.patch('/lists/' + MAIN_LIST_ID + '/members/' + contactId, {
-//     interests: { [meal.id]: true },
-//   });
+export const modifyContact = (contactId, newContact) =>
+  mailchimp.patch('/lists/' + MAIN_LIST_ID + '/members/' + contactId, {
+    email_address: newContact.email,
+    merge_fields: {
+      FNAME: newContact.firstName,
+      LNAME: newContact.lastName,
+    },
+  });
