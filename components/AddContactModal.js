@@ -21,10 +21,10 @@ const AddContactModal = ({ isModalVisible, closeModal }) =>
           }}
           style={styles.addButton}
         >
-          <Text> Add </Text>
+          <Text style={styles.buttonText}> Add </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={closeModal} style={styles.cancelButton}>
-          <Text> Cancel </Text>
+          <Text style={styles.buttonText}> Cancel </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "100%",
+    fontSize: 24,
   },
   addButton: {
     width: "50%",
@@ -77,5 +78,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "red",
+  },
+  buttonText: {
+    fontSize: 24,
   },
 });
