@@ -1,5 +1,9 @@
 import { getContacts } from './contacts';
 
-it('renders without crashing', () => {
-  expect(1 + 1).toBe(2);
-});
+// describe('Contacts', () => {
+//   it('returns an array', () => {
+//     return getContacts()
+//       .then(result => console.log(result))
+//       .catch(e => console.log(e));
+//   });
+// });
