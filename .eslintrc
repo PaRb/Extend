@@ -3,8 +3,10 @@
     "react",
     "react-native"
   ],
-  "ecmaFeatures": {
-    "jsx": true
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "rules": {
     "react-native/no-unused-styles": 2,
