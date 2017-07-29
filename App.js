@@ -26,6 +26,27 @@ export default class App extends React.Component {
             lastName: "",
             meal: "",
             id: 3
+          },
+          {
+            email: "pierangelooo@gmail.com",
+            firstName: "Pierangelo",
+            lastName: "Rothenbühler",
+            meal: "#11",
+            id: 4
+          },
+          {
+            email: "florian.bienefelt@gmail.com",
+            firstName: "Florian",
+            lastName: "Bienefelt",
+            meal: "#10",
+            id: 5
+          },
+          {
+            email: "constace.legay@gmail.com",
+            firstName: "",
+            lastName: "",
+            meal: "",
+            id: 6
           }
         ]}
       />

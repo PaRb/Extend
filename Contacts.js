@@ -1,10 +1,17 @@
 import React from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity
+} from "react-native";
 
 export default class Contacts extends React.Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <FlatList
           data={this.props.users}
           keyExtractor={(item, index) => item.id}
@@ -21,6 +28,14 @@ export default class Contacts extends React.Component {
               </Text>
             </View>}
         />
+        <TouchableOpacity
+          style={styles.addContactButton}
+          onPress={() => {
+            console.log("hello!");
+          }}
+        >
+          <Text style={styles.addContactButtonText}>+</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -28,30 +43,40 @@ export default class Contacts extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    position: "relative"
   },
   itemName: {
-    padding: 10,
-    fontSize: 20,
-    height: 44
+    fontSize: 20
   },
   itemEmail: {
-    padding: 10,
     fontSize: 18,
-    height: 44,
     color: "gray"
   },
   itemView: {
     flex: 1,
     borderBottomColor: "black",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    justifyContent: "space-around",
+    height: 96
   },
   itemMeal: {
-    padding: 10,
     fontSize: 18,
     fontWeight: "bold"
+  },
+  addContactButton: {
+    position: "absolute",
+    bottom: 16,
+    right: 16,
+    width: 64,
+    height: 64,
+    backgroundColor: "blue",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 32
+  },
+  addContactButtonText: {
+    color: "white",
+    fontSize: 30
   }
 });
