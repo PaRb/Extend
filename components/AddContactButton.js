@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-const AddContactButton = props =>
-  <TouchableOpacity
-    style={styles.addContactButton}
-    onPress={() => {
-      console.log("hello!");
-    }}
-  >
+const AddContactButton = ({ handlePress }) =>
+  <TouchableOpacity style={styles.addContactButton} onPress={handlePress}>
     <Text style={styles.addContactButtonText}>+</Text>
   </TouchableOpacity>;
 
