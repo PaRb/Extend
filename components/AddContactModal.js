@@ -17,6 +17,7 @@ const AddContactModal = ({ isModalVisible, closeModal }) =>
       <View style={styles.buttonsView}>
         <TouchableOpacity
           onPress={() => {
+            //TODO : add API code here
             console.log("Hello!");
           }}
           style={styles.addButton}

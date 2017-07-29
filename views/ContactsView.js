@@ -14,9 +14,10 @@ export default class ContactsView extends Component {
   closeModal = () => this.setState({ isModalVisible: false });
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <ContactList contacts={this.props.contacts} />
+        <ContactList contacts={this.props.contacts} navigate={navigate} />
         <AddContactButton handlePress={this.showModal} />
         <AddContactModal
           isModalVisible={this.state.isModalVisible}

@@ -6,7 +6,9 @@ export default class SingleContactView extends Component {
   render() {
     return (
       <View>
-        <Text>Hello!</Text>
+        <Text>
+          Hello {this.props.navigation.state.params.id}!
+        </Text>
       </View>
     );
   }
