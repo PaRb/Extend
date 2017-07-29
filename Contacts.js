@@ -13,8 +13,8 @@ export default class Contacts extends React.Component {
               <Text style={styles.itemName}>
                 {item.firstName || "Prénom"} {item.lastName || "Nom"}
               </Text>
-              <Text style={styles.itemRepas}>
-                {item.repas || "Pas encore assigné"}
+              <Text style={styles.itemMeal}>
+                {item.meal || "Pas encore assigné"}
               </Text>
               <Text style={styles.itemEmail}>
                 {item.email || "Pas encore d'adresse email"}
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "black",
     borderBottomWidth: 1
   },
-  itemRepas: {
+  itemMeal: {
     padding: 10,
     fontSize: 18,
     fontWeight: "bold"

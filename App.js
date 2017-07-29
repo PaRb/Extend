@@ -10,21 +10,21 @@ export default class App extends React.Component {
             email: "pierangelooo@gmail.com",
             firstName: "Pierangelo",
             lastName: "Rothenbühler",
-            repas: "#11",
+            meal: "#11",
             id: 1
           },
           {
             email: "florian.bienefelt@gmail.com",
             firstName: "Florian",
             lastName: "Bienefelt",
-            repas: "#10",
+            meal: "#10",
             id: 2
           },
           {
             email: "constace.legay@gmail.com",
             firstName: "",
             lastName: "",
-            repas: "",
+            meal: "",
             id: 3
           }
         ]}
