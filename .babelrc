@@ -1,0 +1,4 @@
+{
+  "presets": ["react-native", "stage-0"],
+  "plugins": ["syntax-class-properties", "transform-class-properties"]
+}
