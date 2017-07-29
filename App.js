@@ -6,7 +6,7 @@ export default class App extends React.Component {
     return (
       <View>
         <FlatList
-          data={[{ key: "Pierangelo" }, { key: "Florian" }]}
+          data={[{ key: "Pierangeloo" }, { key: "Florian" }]}
           renderItem={({ item }) =>
             <Text style={styles.item}>
               {item.key}
