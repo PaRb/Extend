@@ -1,12 +1,20 @@
-import React from "react";
-import { StackNavigator } from "react-navigation";
+import { TabNavigator } from 'react-navigation';
 
-import ContactsContainer from "./containers/ContactsContainer.js";
-import SingleContactContainer from "./containers/SingleContactContainer.js";
+import ContactsApp from './views/ContactsApp';
+import EventsApp from './views/EventsApp';
 
-const App = StackNavigator({
-  ContactsView: { screen: ContactsContainer },
-  SingleContactView: { screen: SingleContactContainer },
-});
+const App = TabNavigator(
+  {
+    Contacts: { screen: ContactsApp },
+    Events: { screen: EventsApp },
+  },
+  {
+    swipeEnabled: true,
+    animationEnabled: true,
+    tabBarOptions: {
+      activeTintColor: '#e91e63',
+    },
+  },
+);
 
 export default App;

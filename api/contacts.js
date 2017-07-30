@@ -43,6 +43,17 @@ export const getMealGroups = () =>
     })),
   );
 
+export const getMeal = id =>
+  generateRequest(
+    '/lists/' +
+      MAIN_LIST_ID +
+      '/interest-categories/' +
+      MEAL_GROUPS_ID +
+      '/interests/' +
+      id,
+    'GET',
+  );
+
 export const toggleContactToMeal = (contactId, mealNo, nextValue = true) =>
   getMealGroups()
     .then(result => result.find(meal => meal.name === '#' + mealNo))

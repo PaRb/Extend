@@ -19,7 +19,6 @@ export default class ContactsContainer extends Component {
   }
 
   refresh = () => {
-    console.log('hello');
     this.setState({ refreshing: true }, () =>
       getAllContacts().then(result =>
         this.setState({ contacts: result, refreshing: false }),
