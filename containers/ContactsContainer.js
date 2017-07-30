@@ -1,52 +1,8 @@
-import React, { Component } from "react";
-import { Text } from "react-native";
+import React, { Component } from 'react';
+import { Text } from 'react-native';
 
-import ContactsView from "../views/ContactsView.js";
-
-const dummyContacts = [
-  {
-    email: "pierangelooo@gmail.com",
-    firstName: "Pierangelo",
-    lastName: "Rothenbühler",
-    meal: "#11",
-    id: 1,
-  },
-  {
-    email: "florian.bienefelt@gmail.com",
-    firstName: "Florian",
-    lastName: "Bienefelt",
-    meal: "#10",
-    id: 2,
-  },
-  {
-    email: "constace.legay@gmail.com",
-    firstName: "",
-    lastName: "",
-    meal: "",
-    id: 3,
-  },
-  {
-    email: "pierangelooo@gmail.com",
-    firstName: "Pierangelo",
-    lastName: "Rothenbühler",
-    meal: "#11",
-    id: 4,
-  },
-  {
-    email: "florian.bienefelt@gmail.com",
-    firstName: "Florian",
-    lastName: "Bienefelt",
-    meal: "#10",
-    id: 5,
-  },
-  {
-    email: "constance.legay@gmail.com",
-    firstName: "",
-    lastName: "",
-    meal: "",
-    id: 6,
-  },
-];
+import ContactsView from '../views/ContactsView.js';
+import { getAllContacts, addContactToMeal } from '../api-v2/contacts';
 
 export default class ContactsContainer extends Component {
   constructor(props) {
@@ -58,8 +14,7 @@ export default class ContactsContainer extends Component {
   }
 
   componentDidMount() {
-    // TODO: Add API code here
-    this.setState({ contacts: dummyContacts });
+    getAllContacts().then(result => this.setState({ contacts: result }));
   }
 
   render() {
