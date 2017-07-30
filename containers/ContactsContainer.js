@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 
 import ContactsView from '../views/ContactsView.js';
-import { getAllContacts, addContactToMeal } from '../api-v2/contacts';
+import { getAllContacts } from '../api-v2/contacts';
 
 export default class ContactsContainer extends Component {
   constructor(props) {
@@ -10,17 +10,33 @@ export default class ContactsContainer extends Component {
 
     this.state = {
       contacts: [],
+      refreshing: false,
     };
   }
 
   componentDidMount() {
-    getAllContacts().then(result => this.setState({ contacts: result }));
+    this.refresh();
   }
 
+  refresh = () => {
+    console.log('hello');
+    this.setState({ refreshing: true }, () =>
+      getAllContacts().then(result =>
+        this.setState({ contacts: result, refreshing: false }),
+      ),
+    );
+  };
+
   render() {
-    return this.state.contacts.length > 0
-      ? <ContactsView contacts={this.state.contacts} {...this.props} />
+    const { refreshing, contacts } = this.state;
+    return contacts.length > 0
+      ? <ContactsView
+          contacts={contacts}
+          {...this.props}
+          refreshing={refreshing}
+          handleRefresh={this.refresh}
+        />
       : <Text>Loading...</Text>;
-    // add prop to refresh contacts (fetchContacts) when pull down to refresh
+    // TODO: add prop to refresh contacts (fetchContacts) when pull down to refresh
   }
 }

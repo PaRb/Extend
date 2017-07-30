@@ -1,49 +1,70 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { StyleSheet, Text, View } from "react-native";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+
+import ContactText from '../components/ContactText';
+import ContactForm from '../components/ContactForm';
+import { modifyContact } from '../api-v2/contacts';
 
 export default class SingleContactView extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: "" };
+    this.state = { showForm: false };
   }
 
+  showForm = () =>
+    this.setState({ showForm: true, ...this.props.contactDetail });
+
+  setForm = (key, value) => this.setState({ [key]: value });
+
+  saveContact = () => {
+    modifyContact(this.props.contactDetail.id, this.state)
+      .then(result => {
+        console.log(result);
+        this.setState({ showForm: false });
+      })
+      .then(this.props.refreshContact);
+  };
+
   render() {
+    const { contactDetail } = this.props;
+    const { showForm } = this.state;
+
     return (
-      <View>
-        <TextView contactDetail={this.props.contactDetail} />
+      <View style={styles.view}>
+        {showForm
+          ? <ContactForm
+              parentState={this.state}
+              setParentState={this.setForm}
+              saveContact={this.saveContact}
+            />
+          : <ContactText contactDetail={contactDetail} />}
+        <TouchableOpacity style={styles.button} onPress={this.showForm}>
+          <Text style={styles.buttonText}>Switch</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
 
-SingleContactView.propTypes = {};
-
-const TextView = ({ contactDetail }) => {
-  const keys = Object.keys(contactDetail);
-
-  return (
-    <View>
-      {keys.map(key =>
-        <View key={key}>
-          <Text style={styles.itemLabel}>
-            {key}
-          </Text>
-          <Text style={styles.itemContent}>
-            {contactDetail[key]}
-          </Text>
-        </View>,
-      )}
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
-  itemLabel: {
-    fontSize: 20,
-    fontWeight: "bold",
+  view: {
+    flex: 1,
   },
-  itemContent: {
-    fontSize: 18,
+  button: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: 40,
+  },
+  buttonText: {
+    fontSize: 20,
+    padding: 20,
   },
 });
+
+SingleContactView.propTypes = {
+  contactDetail: PropTypes.object.isRequired,
+  refreshContact: PropTypes.func.isRequired,
+};

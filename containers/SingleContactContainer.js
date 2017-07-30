@@ -1,16 +1,9 @@
-import React, { Component } from "react";
-import { Text } from "react-native";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { Text } from 'react-native';
+import PropTypes from 'prop-types';
 
-import SingleContactView from "../views/SingleContactView.js";
-
-const dummyContact = {
-  email: "pierangelooo@gmail.com",
-  firstName: "Pierangelo",
-  lastName: "Rothenbühler",
-  meal: "#11",
-  id: 1,
-};
+import SingleContactView from '../views/SingleContactView.js';
+import { getContactById } from '../api-v2/contacts';
 
 export default class SingleContactContainer extends Component {
   constructor(props) {
@@ -22,18 +15,25 @@ export default class SingleContactContainer extends Component {
   }
 
   componentDidMount() {
-    // TODO: Add API code here: get contact from mailchimp based on ID passed as props
-    this.setState({ contactDetail: dummyContact });
+    this.fetchContact();
   }
+
+  fetchContact = () => {
+    const id = this.props.navigation.state.params.id;
+    getContactById(id).then(result => this.setState({ contactDetail: result }));
+  };
 
   render() {
     return Object.keys(this.state.contactDetail).length > 0
       ? <SingleContactView
           contactDetail={this.state.contactDetail}
           {...this.props}
+          refreshContact={this.fetchContact}
         />
       : <Text>Loading...</Text>;
   }
 }
 
-SingleContactContainer.propTypes = {};
+SingleContactContainer.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};

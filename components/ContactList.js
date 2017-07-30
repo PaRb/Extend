@@ -1,21 +1,23 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { FlatList, StyleSheet, Text, TouchableOpacity } from "react-native";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-const ContactList = ({ contacts, navigate }) =>
+const ContactList = ({ contacts, navigate, refreshing, handleRefresh }) =>
   <FlatList
     data={contacts}
-    keyExtractor={(item, index) => item.id}
+    keyExtractor={item => item.id}
+    refreshing={refreshing}
+    onRefresh={handleRefresh}
     renderItem={({ item }) =>
       <TouchableOpacity
         style={styles.itemView}
-        onPress={() => navigate("SingleContactView", { id: item.id })}
+        onPress={() => navigate('SingleContactView', { id: item.id })}
       >
         <Text style={styles.itemName}>
-          {item.firstName || "Prénom"} {item.lastName || "Nom"}
+          {item.firstName || 'Prénom'} {item.lastName || 'Nom'}
         </Text>
         <Text style={styles.itemMeal}>
-          {item.meal || "Pas encore assigné"}
+          {item.meal || 'Pas encore assigné'}
         </Text>
         <Text style={styles.itemEmail}>
           {item.email || "Pas encore d'adresse email"}
@@ -35,17 +37,17 @@ const styles = StyleSheet.create({
   },
   itemEmail: {
     fontSize: 18,
-    color: "gray",
+    color: 'gray',
   },
   itemView: {
     flex: 1,
-    borderBottomColor: "black",
+    borderBottomColor: 'black',
     borderBottomWidth: 1,
-    justifyContent: "space-around",
+    justifyContent: 'space-around',
     height: 96,
   },
   itemMeal: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });
