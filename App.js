@@ -1,12 +1,12 @@
 import React from "react";
 import { StackNavigator } from "react-navigation";
 
-import ContactsView from "./containers/ContactsContainer.js";
-import SingleContactView from "./views/SingleContactView.js";
+import ContactsContainer from "./containers/ContactsContainer.js";
+import SingleContactContainer from "./containers/SingleContactContainer.js";
 
 const App = StackNavigator({
-  ContactsView: { screen: ContactsView },
-  SingleContactView: { screen: SingleContactView },
+  ContactsView: { screen: ContactsContainer },
+  SingleContactView: { screen: SingleContactContainer },
 });
 
 export default App;
