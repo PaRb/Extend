@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { TextInput } from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import { TextInput } from "react-native";
 
 const AddContactForm = ({ myStyle, setEmail, email }) => {
   return (

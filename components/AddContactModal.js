@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import AddContactForm from './AddContactForm.js';
-import { addContact } from '../api/contacts';
+import AddContactForm from "./AddContactForm.js";
+import { addContact } from "../api/contacts";
 
 export default class AddContactModal extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { email: '' };
+    this.state = { email: "" };
   }
 
   setEmail = value => {
@@ -42,19 +42,24 @@ export default class AddContactModal extends Component {
                 addContact({ email })
                   .then(result => {
                     closeModal();
+                    this.setEmail("");
                     return result;
                   })
                   .then(result => {
-                    console.log('heheh');
-                    console.log(result);
-                    navigate('SingleContactView', { id: result.id });
+                    navigate("SingleContactView", { id: result.id });
                   });
               }}
               style={styles.addButton}
             >
               <Text style={styles.buttonText}> Add </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={closeModal} style={styles.cancelButton}>
+            <TouchableOpacity
+              onPress={() => {
+                closeModal();
+                this.setEmail("");
+              }}
+              style={styles.cancelButton}
+            >
               <Text style={styles.buttonText}> Cancel </Text>
             </TouchableOpacity>
           </View>
@@ -73,44 +78,44 @@ AddContactModal.propTypes = {
 const styles = StyleSheet.create({
   modalView: {
     padding: 10,
-    position: 'absolute',
+    position: "absolute",
     flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
-    height: '100%',
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+    height: "100%",
   },
   formView: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '50%',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "50%",
   },
   buttonsView: {
     flex: 1,
-    flexDirection: 'row',
-    height: '50%',
+    flexDirection: "row",
+    height: "50%",
   },
   addContactForm: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: '100%',
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
     fontSize: 24,
   },
   addButton: {
-    width: '50%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'green',
+    width: "50%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "green",
   },
   cancelButton: {
-    width: '50%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'red',
+    width: "50%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "red",
   },
   buttonText: {
     fontSize: 24,
