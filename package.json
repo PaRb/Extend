@@ -23,9 +23,10 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "crypto": "^0.0.3",
     "expo": "^19.0.0",
     "prop-types": "^15.5.10",
-    "mailchimp-api-v3": "^1.7.0",
+    "query-string": "^5.0.0",
     "react": "16.0.0-alpha.12",
     "react-native": "0.46.4",
     "react-navigation": "^1.0.0-beta.11"
