@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import AddContactForm from './AddContactForm.js';
-import { addContact } from '../api-v2/contacts';
+import { addContact } from '../api/contacts';
 
 export default class AddContactModal extends Component {
   constructor(props) {

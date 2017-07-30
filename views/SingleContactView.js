@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import ContactText from '../components/ContactText';
 import ContactForm from '../components/ContactForm';
-import { modifyContact } from '../api-v2/contacts';
+import { modifyContact } from '../api/contacts';
 
 export default class SingleContactView extends Component {
   constructor(props) {

@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import SingleContactView from '../views/SingleContactView.js';
-import { getContactById } from '../api-v2/contacts';
+import { getContactById } from '../api/contacts';
 
 export default class SingleContactContainer extends Component {
   constructor(props) {

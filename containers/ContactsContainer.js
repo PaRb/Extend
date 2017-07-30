@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 
 import ContactsView from '../views/ContactsView.js';
-import { getAllContacts } from '../api-v2/contacts';
+import { getAllContacts } from '../api/contacts';
 
 export default class ContactsContainer extends Component {
   constructor(props) {
