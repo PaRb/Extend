@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, TouchableOpacity } from "react-native";
 
-const ContactList = ({ contacts }) =>
+const ContactList = ({ contacts, navigate }) =>
   <FlatList
     data={contacts}
     keyExtractor={(item, index) => item.id}
     renderItem={({ item }) =>
-      <View style={styles.itemView}>
+      <TouchableOpacity
+        style={styles.itemView}
+        onPress={() => navigate("SingleContactView", { id: item.id })}
+      >
         <Text style={styles.itemName}>
           {item.firstName || "Prénom"} {item.lastName || "Nom"}
         </Text>
@@ -17,7 +20,7 @@ const ContactList = ({ contacts }) =>
         <Text style={styles.itemEmail}>
           {item.email || "Pas encore d'adresse email"}
         </Text>
-      </View>}
+      </TouchableOpacity>}
   />;
 
 ContactList.propTypes = {

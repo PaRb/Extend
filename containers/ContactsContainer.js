@@ -19,7 +19,7 @@ export default class ContactsContainer extends Component {
 
   render() {
     return this.state.contacts.length > 0
-      ? <ContactsView contacts={this.state.contacts} />
+      ? <ContactsView contacts={this.state.contacts} {...this.props} />
       : <Text>Loading...</Text>;
     // add prop to refresh contacts (fetchContacts) when pull down to refresh
   }

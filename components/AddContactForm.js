@@ -11,7 +11,7 @@ export default class AddContactForm extends Component {
   render() {
     return (
       <TextInput
-        style={{ height: 40 }}
+        style={this.props.myStyle}
         placeholder="Add email address"
         onChangeText={text => this.setState({ text })}
         value={this.state.text}
