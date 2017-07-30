@@ -29,7 +29,7 @@ export default class MealsContainer extends Component {
   render() {
     const { events } = this.state;
     return events.length > 0
-      ? <EventsView events={events} />
+      ? <EventsView events={events} {...this.props} />
       : <Text>Loading hehe!</Text>;
   }
 }
