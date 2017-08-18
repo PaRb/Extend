@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  ScrollView,
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 
 import ContactText from '../components/ContactText';
 import ContactForm from '../components/ContactForm';
+import MealToggler from '../components/MealToggler';
+
 import { modifyContact } from '../api/contacts';
 
 export default class SingleContactView extends Component {
@@ -31,7 +39,7 @@ export default class SingleContactView extends Component {
     const { showForm } = this.state;
 
     return (
-      <View style={styles.view}>
+      <ScrollView style={styles.view}>
         {showForm
           ? <ContactForm
               parentState={this.state}
@@ -45,7 +53,8 @@ export default class SingleContactView extends Component {
         <TouchableOpacity style={styles.button} onPress={this.showForm}>
           <Text style={styles.buttonText}>Switch</Text>
         </TouchableOpacity>
-      </View>
+        <MealToggler />
+      </ScrollView>
     );
   }
 }
@@ -53,6 +62,7 @@ export default class SingleContactView extends Component {
 const styles = StyleSheet.create({
   view: {
     flex: 1,
+    overflow: 'scroll',
   },
   button: {
     flex: 1,
