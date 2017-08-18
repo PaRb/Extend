@@ -115,3 +115,27 @@ export const addMeal = name =>
     {},
     { name },
   );
+
+export const getMealsForContact = contact =>
+  getMealGroups().then(result => {
+    const allInterests = contact.interests;
+
+    const allMealIds = result.map(obj => obj.id);
+
+    const activeInterests = [];
+    Object.keys(allInterests).forEach(
+      interestId =>
+        allInterests[interestId] && activeInterests.push(interestId),
+    );
+
+    const activeMeals = activeInterests.filter(
+      interestId => allMealIds.indexOf(interestId) >= 0,
+    );
+
+    return Promise.all(
+      activeMeals.map(mealId => {
+        console.log(mealId);
+        return getMeal(mealId);
+      }),
+    );
+  });

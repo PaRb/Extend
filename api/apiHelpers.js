@@ -36,6 +36,7 @@ export const generateRequest = (
 };
 
 export const prettyUser = rawData => ({
+  ...rawData,
   id: rawData.id,
   email: rawData.email_address,
   firstName: rawData.merge_fields.FNAME,

@@ -20,9 +20,19 @@ export default class ContactsContainer extends Component {
 
   refresh = () => {
     this.setState({ refreshing: true }, () =>
-      getAllContacts().then(result =>
-        this.setState({ contacts: result, refreshing: false }),
-      ),
+      getAllContacts().then(result => {
+        const sortedContacts = result.sort((a, b) => {
+          const emailA = a.firstName.toLowerCase();
+          const emailB = b.firstName.toLowerCase();
+          if (emailA < emailB) return -1;
+          if (emailA > emailB) return 1;
+          return 0;
+        });
+        this.setState({
+          contacts: sortedContacts,
+          refreshing: false,
+        });
+      }),
     );
   };
 

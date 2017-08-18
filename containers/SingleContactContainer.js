@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import SingleContactView from '../views/SingleContactView.js';
-import { getContactById } from '../api/contacts';
+import { getContactById, getMealsForContact } from '../api/contacts';
 
 export default class SingleContactContainer extends Component {
   constructor(props) {
@@ -20,7 +20,17 @@ export default class SingleContactContainer extends Component {
 
   fetchContact = () => {
     const id = this.props.navigation.state.params.id;
-    getContactById(id).then(result => this.setState({ contactDetail: result }));
+    getContactById(id)
+      .then(result => {
+        this.setState({ contactDetail: result });
+        return result;
+      })
+      .then(contact => getMealsForContact(contact))
+      .then(result =>
+        this.setState(prev => ({
+          contactDetail: { ...prev.contactDetail, meals: result },
+        })),
+      );
   };
 
   render() {

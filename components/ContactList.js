@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     justifyContent: 'space-around',
     height: 96,
+    padding: 10,
   },
   itemMeal: {
     fontSize: 18,
