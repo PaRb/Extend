@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 
-import AddContactForm from "./AddContactForm.js";
-import { addContact } from "../api/contacts";
+import AddContactForm from './AddContactForm.js';
+import { addContact } from '../api/contacts';
 
 export default class ModalComponents extends Component {
   render() {
@@ -24,11 +24,11 @@ export default class ModalComponents extends Component {
               addContact({ email })
                 .then(result => {
                   closeModal();
-                  setEmail("");
+                  setEmail('');
                   return result;
                 })
                 .then(result => {
-                  navigate("SingleContactView", { id: result.id });
+                  navigate('SingleContactView', { ...result });
                 });
             }}
             style={styles.addButton}
@@ -38,7 +38,7 @@ export default class ModalComponents extends Component {
           <TouchableOpacity
             onPress={() => {
               closeModal();
-              setEmail("");
+              setEmail('');
             }}
             style={styles.cancelButton}
           >
@@ -53,44 +53,44 @@ export default class ModalComponents extends Component {
 const styles = StyleSheet.create({
   modalView: {
     padding: 10,
-    position: "absolute",
+    position: 'absolute',
     flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
-    height: "100%",
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    height: '100%',
   },
   formView: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "50%",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '50%',
   },
   buttonsView: {
     flex: 1,
-    flexDirection: "row",
-    height: "50%",
+    flexDirection: 'row',
+    height: '50%',
   },
   addContactForm: {
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    height: "100%",
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
     fontSize: 24,
   },
   addButton: {
-    width: "50%",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "green",
+    width: '50%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'green',
   },
   cancelButton: {
-    width: "50%",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "red",
+    width: '50%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'red',
   },
   buttonText: {
     fontSize: 24,

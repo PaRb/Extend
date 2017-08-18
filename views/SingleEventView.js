@@ -9,17 +9,19 @@ const SingleEventView = ({ event, members, navigation }) => {
         {event.name}
       </Text>
       {members
-        ? members.map(member =>
-            <TouchableOpacity
-              key={member.id}
-              onPress={() =>
-                navigation.navigate('SingleContactView', { id: member.id })}
-            >
-              <Text style={styles.member}>
-                {member.firstName} {member.lastName}
-              </Text>
-            </TouchableOpacity>,
-          )
+        ? members.length > 0
+          ? members.map(member =>
+              <TouchableOpacity
+                key={member.id}
+                onPress={() =>
+                  navigation.navigate('SingleContactView', { ...member })}
+              >
+                <Text style={styles.member}>
+                  {member.firstName} {member.lastName}
+                </Text>
+              </TouchableOpacity>,
+            )
+          : <Text>Personne pour l'instant</Text>
         : <Text>Loading members..</Text>}
     </View>
   );

@@ -11,7 +11,7 @@ const ContactList = ({ contacts, navigate, refreshing, handleRefresh }) =>
     renderItem={({ item }) =>
       <TouchableOpacity
         style={styles.itemView}
-        onPress={() => navigate('SingleContactView', { id: item.id })}
+        onPress={() => navigate('SingleContactView', { ...item })}
       >
         <Text style={styles.itemName}>
           {item.firstName || 'Prénom'} {item.lastName || 'Nom'}

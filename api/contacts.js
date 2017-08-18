@@ -116,10 +116,8 @@ export const addMeal = name =>
     { name },
   );
 
-export const getMealsForContact = contact =>
+export const getMealsForContact = ({ interests: allInterests }) =>
   getMealGroups().then(result => {
-    const allInterests = contact.interests;
-
     const allMealIds = result.map(obj => obj.id);
 
     const activeInterests = [];
