@@ -38,7 +38,10 @@ export default class SingleContactView extends Component {
               setParentState={this.setForm}
               saveContact={this.saveContact}
             />
-          : <ContactText contactDetail={contactDetail} />}
+          : <ContactText
+              contactDetail={contactDetail}
+              navigation={this.props.navigation}
+            />}
         <TouchableOpacity style={styles.button} onPress={this.showForm}>
           <Text style={styles.buttonText}>Switch</Text>
         </TouchableOpacity>

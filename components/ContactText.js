@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const keysToShow = ['id', 'email', 'firstName', 'lastName'];
 
-const ContactText = ({ contactDetail }) => {
+const ContactText = ({ contactDetail, navigation }) => {
   return (
     <View>
       {keysToShow.map(key =>
@@ -20,9 +20,19 @@ const ContactText = ({ contactDetail }) => {
       <Text style={styles.itemLabel}>Repas assigné(s)</Text>
       {contactDetail.meals
         ? contactDetail.meals.length > 0
-          ? <Text style={styles.itemContent}>
-              {contactDetail.meals.map(meal => meal.name + '  ')}
-            </Text>
+          ? <View style={styles.meals}>
+              {contactDetail.meals.map(meal =>
+                <TouchableOpacity
+                  key={meal.id}
+                  onPress={() =>
+                    navigation.navigate('SingleEventView', { ...meal })}
+                >
+                  <Text style={styles.meal}>
+                    {meal.name}
+                  </Text>
+                </TouchableOpacity>,
+              )}
+            </View>
           : <Text style={styles.itemContent}>Pas de repas!</Text>
         : <Text style={styles.itemContent}>Loading...</Text>}
     </View>
@@ -37,6 +47,13 @@ const styles = StyleSheet.create({
   },
   itemContent: {
     fontSize: 18,
+    padding: 10,
+  },
+  meals: {
+    flex: 0,
+  },
+  meal: {
+    fontSize: 24,
     padding: 10,
   },
 });

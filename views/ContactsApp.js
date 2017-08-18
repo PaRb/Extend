@@ -2,6 +2,7 @@ import { StackNavigator } from 'react-navigation';
 
 import ContactsContainer from '../containers/ContactsContainer';
 import SingleContactContainer from '../containers/SingleContactContainer';
+import SingleEventContainer from '../containers/SingleEventContainer';
 
 const ContactsApp = StackNavigator({
   ContactsView: {
@@ -14,6 +15,12 @@ const ContactsApp = StackNavigator({
     screen: SingleContactContainer,
     navigationOptions: ({ navigation }) => ({
       title: "Quelqu'un",
+    }),
+  },
+  SingleEventView: {
+    screen: SingleEventContainer,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Repas ' + navigation.state.params.name,
     }),
   },
 });
