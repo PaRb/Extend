@@ -1,24 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const SingleEventView = ({ event }) => {
-  let keys = Object.keys(event);
-  // Remove unecessary key
-  keys = keys.filter(key => key !== '_links');
-
+const SingleEventView = ({ event, members, navigation }) => {
   return (
     <View style={styles.view}>
-      {keys.map(key =>
-        <View key={key} style={styles.item}>
-          <Text style={styles.label}>
-            {key}
-          </Text>
-          <Text style={styles.value}>
-            {event[key]}
-          </Text>
-        </View>,
-      )}
+      <Text style={styles.title}>
+        {event.name}
+      </Text>
+      {members
+        ? members.map(member =>
+            <TouchableOpacity
+              key={member.id}
+              onPress={() =>
+                navigation.navigate('SingleContactView', { id: member.id })}
+            >
+              <Text style={styles.member}>
+                {member.firstName} {member.lastName}
+              </Text>
+            </TouchableOpacity>,
+          )
+        : <Text>Loading members..</Text>}
     </View>
   );
 };
@@ -26,19 +28,14 @@ const SingleEventView = ({ event }) => {
 const styles = StyleSheet.create({
   view: {
     flex: 1,
+    padding: 20,
   },
-  item: {
-    flex: 1,
-    height: 32,
-    paddingLeft: 20,
+  title: {
+    fontSize: 32,
   },
-  label: {
-    flex: 1,
+  member: {
     fontSize: 20,
-  },
-  value: {
-    flex: 1,
-    fontSize: 24,
+    padding: 10,
   },
 });
 

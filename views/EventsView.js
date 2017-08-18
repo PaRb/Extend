@@ -8,10 +8,12 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const EventsView = ({ events, navigation }) => {
+const EventsView = ({ events, navigation, refreshing, handleRefresh }) => {
   return (
     <View style={styles.view}>
       <FlatList
+        refreshing={refreshing}
+        onRefresh={handleRefresh}
         data={events}
         keyExtractor={event => event.id}
         renderItem={({ item }) =>

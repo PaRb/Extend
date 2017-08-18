@@ -24,7 +24,7 @@ export const generateRequest = (
   if (body) {
     bodyJSON = JSON.stringify(body);
   }
-
+  console.log(fullPath);
   return fetch(fullPath, {
     mode: 'no-cors',
     method,

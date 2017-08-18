@@ -91,3 +91,27 @@ export const modifyContact = (contactId, newContact) =>
       },
     },
   ).then(prettyUser);
+
+export const getContactsByMeal = mealId =>
+  generateRequest('/lists/' + MAIN_LIST_ID + '/members', 'GET', {
+    interest_category_id: MEAL_GROUPS_ID,
+    interest_ids: mealId,
+    interest_match: 'all',
+  }).then(data => data.members.map(prettyUser));
+
+export const setContactToNextmeal = (contactId, currentMeal, nextMeal) =>
+  toggleContactToMeal(contactId, currentMeal, false).then(() =>
+    toggleContactToMeal(contactId, nextMeal, true),
+  );
+
+export const addMeal = name =>
+  generateRequest(
+    '/lists/' +
+      MAIN_LIST_ID +
+      '/interest-categories/' +
+      MEAL_GROUPS_ID +
+      '/interests',
+    'POST',
+    {},
+    { name },
+  );
