@@ -3,4 +3,5 @@ export default {
   primary2: '#58C9B9',
   primary3: '#519D9E',
   secondary: '#D1B6E1',
+  lightGrey: '#d8d8d8',
 };

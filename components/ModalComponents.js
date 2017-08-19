@@ -11,36 +11,39 @@ export default class ModalComponents extends Component {
     const { email, setEmail, closeModal, navigate } = this.props;
 
     return (
-      <View style={styles.modalView}>
-        <View style={styles.formView}>
-          <AddContactForm
-            myStyle={styles.addContactForm}
-            setEmail={setEmail}
-            email={email}
-          />
-        </View>
-        <View style={styles.buttonsView}>
-          <Button
-            handlePress={() => {
-              addContact({ email })
-                .then(result => {
-                  closeModal();
-                  setEmail('');
-                  return result;
-                })
-                .then(result => {
-                  navigate('SingleContactView', { ...result });
-                });
-            }}
-            label="Add"
-          />
-          <Button
-            handlePress={() => {
-              closeModal();
-              setEmail('');
-            }}
-            label="Cancel"
-          />
+      <View style={styles.modalContainer}>
+        <View style={styles.modalView}>
+          <View style={styles.formView}>
+            <AddContactForm
+              myStyle={styles.addContactForm}
+              setEmail={setEmail}
+              email={email}
+            />
+          </View>
+          <View style={styles.buttonsView}>
+            <Button
+              handlePress={() => {
+                closeModal();
+                setEmail('');
+              }}
+              label="Cancel"
+            />
+            <Button
+              handlePress={() => {
+                addContact({ email })
+                  .then(result => {
+                    closeModal();
+                    setEmail('');
+                    return result;
+                  })
+                  .then(result => {
+                    navigate('SingleContactView', { ...result });
+                  });
+              }}
+              label="Add"
+              primary
+            />
+          </View>
         </View>
       </View>
     );
@@ -48,16 +51,24 @@ export default class ModalComponents extends Component {
 }
 
 const styles = StyleSheet.create({
+  modalContainer: {
+    height: '100%',
+    width: '100%',
+    position: 'relative',
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  },
   modalView: {
     padding: 10,
-    position: 'absolute',
     flex: 0,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
-    height: '50%',
-    top: '25%',
+    height: '30%',
+    borderRadius: 16,
   },
   formView: {
     flex: 1,

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
+import colors from '../config/colors';
+
 const ContactList = ({ contacts, navigate, refreshing, handleRefresh }) =>
   <FlatList
     data={contacts}
@@ -41,7 +43,8 @@ const styles = StyleSheet.create({
   },
   itemView: {
     flex: 1,
-    borderBottomColor: 'black',
+    backgroundColor: 'white',
+    borderBottomColor: colors.lightGrey,
     borderBottomWidth: 1,
     justifyContent: 'space-around',
     height: 96,

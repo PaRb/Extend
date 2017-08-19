@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     right: 16,
     width: 64,
     height: 64,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.secondary,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
