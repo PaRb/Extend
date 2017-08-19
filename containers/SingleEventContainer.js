@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 
+import Loading from '../components/Loading';
 import SingleEventView from '../views/SingleEventView';
 import { getMeal, getContactsByMeal } from '../api/contacts';
 
@@ -31,7 +32,7 @@ export default class SingleEventContainer extends Component {
 
     return event.id
       ? <SingleEventView event={event} members={members} {...this.props} />
-      : <Text>Loading...</Text>;
+      : <Loading />;
   }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 
+import Loading from '../components/Loading';
 import ContactsView from '../views/ContactsView.js';
 import { getAllContacts } from '../api/contacts';
 
@@ -45,7 +46,7 @@ export default class ContactsContainer extends Component {
           refreshing={refreshing}
           handleRefresh={this.refresh}
         />
-      : <Text>Loading...</Text>;
+      : <Loading />;
     // TODO: add prop to refresh contacts (fetchContacts) when pull down to refresh
   }
 }

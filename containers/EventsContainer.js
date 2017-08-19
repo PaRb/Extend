@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 
+import Loading from '../components/Loading';
 import EventsView from '../views/EventsView';
 import { getMealGroups } from '../api/contacts';
 
@@ -35,7 +36,7 @@ export default class MealsContainer extends Component {
           handleRefresh={this.refresh}
           {...this.props}
         />
-      : <Text>Loading hehe!</Text>;
+      : <Loading />;
   }
 }
 
