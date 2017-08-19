@@ -44,6 +44,7 @@ export default ContactList;
 
 const styles = StyleSheet.create({
   text: {
+    height: '100%',
     flex: 1,
     justifyContent: 'space-between',
   },

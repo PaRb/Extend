@@ -1,5 +1,27 @@
 {
   "expo": {
-    "sdkVersion": "19.0.0"
+    "name": "Extend",
+    "slug": "extend",
+    "description": "L'app pour les créateurs d'Horizons",
+    "version": "1.0.0",
+    "privacy": "unlisted",
+    "primaryColor": "#58C9B9",
+    "icon": "assets/icon.png",
+    "sdkVersion": "19.0.0",
+    "loading": {
+      "icon": "assets/icon.png",
+      "backgroundColor": "#FEFDD7",
+      "hideExponentText": true,
+      "splash": {
+        "backgroundColor": "#FEFDD7",
+        "image": {
+          "ios": {
+            "backgroundImage": "assets/icon.png"
+          }
+        }
+      }
+    },
+    "androidStatusBarColor": "#58C9B9",
+    "ios": {}
   }
 }

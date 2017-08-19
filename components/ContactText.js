@@ -27,7 +27,7 @@ const ContactText = ({ contactDetail, navigation }) => {
               {contactDetail.meals.map(meal =>
                 <NavigationItem
                   key={meal.id}
-                  onPress={() =>
+                  handlePress={() =>
                     navigation.navigate('SingleEventView', { ...meal })}
                   height={64}
                 >
@@ -37,7 +37,7 @@ const ContactText = ({ contactDetail, navigation }) => {
                 </NavigationItem>,
               )}
             </View>
-          : <Text style={styles.itemContent}>Pas de repas!</Text>
+          : <Text style={styles.noMeals}>Pas de repas!</Text>
         : <Loading fullScreen={false} />}
     </View>
   );
@@ -51,6 +51,13 @@ const styles = StyleSheet.create({
   },
   itemContent: {
     fontSize: 18,
+    padding: 8,
+  },
+  noMeals: {
+    fontSize: 24,
+    flex: 1,
+    padding: 16,
+    alignSelf: 'center',
   },
   meals: {
     flex: 0,

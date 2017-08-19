@@ -12,6 +12,7 @@ import ContactText from '../components/ContactText';
 import ContactForm from '../components/ContactForm';
 import MealToggler from '../components/MealToggler';
 import Button from '../components/Button';
+import NavigationItem from '../components/NavigationItem';
 
 import { modifyContact } from '../api/contacts';
 
@@ -51,8 +52,15 @@ export default class SingleContactView extends Component {
               contactDetail={contactDetail}
               navigation={this.props.navigation}
             />}
-        <Button handlePress={this.showForm} label="Switch" />
-        <MealToggler />
+        <Button handlePress={this.showForm} label="Toggle Form/Text" />
+
+        <NavigationItem
+          handlePress={() =>
+            navigation.navigate('MealToggleView', { ...contactDetail })}
+          height={64}
+        >
+          <Text>Meal Toggler</Text>
+        </NavigationItem>
       </ScrollView>
     );
   }

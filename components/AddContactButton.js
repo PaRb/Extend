@@ -7,7 +7,7 @@ import colors from '../config/colors';
 
 const AddContactButton = ({ handlePress }) =>
   <TouchableOpacity style={styles.addContactButton} onPress={handlePress}>
-    <Entypo name="add-user" size={24} color="white" />
+    <Entypo name="add-user" size={24} color={colors.primary} />
   </TouchableOpacity>;
 
 export default AddContactButton;

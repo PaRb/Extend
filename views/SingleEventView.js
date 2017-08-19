@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import NavigationItem from '../components/NavigationItem';
+import Loading from '../components/Loading';
 
 const SingleEventView = ({ event, members, navigation }) => {
   return (
@@ -27,8 +28,8 @@ const SingleEventView = ({ event, members, navigation }) => {
                 </Text>
               </NavigationItem>,
             )
-          : <Text>Personne pour l'instant</Text>
-        : <Text>Loading members..</Text>}
+          : <Text style={styles.empty}>Personne pour l'instant</Text>
+        : <Loading />}
     </ScrollView>
   );
 };
@@ -43,6 +44,11 @@ const styles = StyleSheet.create({
   },
   member: {
     fontSize: 20,
+  },
+  empty: {
+    alignSelf: 'center',
+    fontSize: 24,
+    padding: 16,
   },
 });
 
