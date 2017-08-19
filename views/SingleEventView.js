@@ -1,43 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  ScrollView,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+
+import NavigationItem from '../components/NavigationItem';
 
 const SingleEventView = ({ event, members, navigation }) => {
   return (
-    <View style={styles.view}>
-      <Text style={styles.title}>
-        {event.name}
-      </Text>
+    <ScrollView style={styles.view}>
       {members
         ? members.length > 0
           ? members.map(member =>
-              <TouchableOpacity
+              <NavigationItem
                 key={member.id}
-                onPress={() =>
+                handlePress={() =>
                   navigation.navigate('SingleContactView', { ...member })}
+                height={64}
               >
                 <Text style={styles.member}>
                   {member.firstName} {member.lastName}
                 </Text>
-              </TouchableOpacity>,
+              </NavigationItem>,
             )
           : <Text>Personne pour l'instant</Text>
         : <Text>Loading members..</Text>}
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    padding: 20,
   },
   title: {
     fontSize: 32,
+    padding: 16,
   },
   member: {
     fontSize: 20,
-    padding: 10,
   },
 });
 

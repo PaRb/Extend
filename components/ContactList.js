@@ -10,6 +10,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 
 import colors from '../config/colors';
+import NavigationItem from './NavigationItem';
 
 const ContactList = ({ contacts, navigate, refreshing, handleRefresh }) =>
   <FlatList
@@ -18,9 +19,8 @@ const ContactList = ({ contacts, navigate, refreshing, handleRefresh }) =>
     refreshing={refreshing}
     onRefresh={handleRefresh}
     renderItem={({ item }) =>
-      <TouchableOpacity
-        style={styles.itemView}
-        onPress={() => navigate('SingleContactView', { ...item })}
+      <NavigationItem
+        handlePress={() => navigate('SingleContactView', { ...item })}
       >
         <View style={styles.text}>
           <Text style={styles.itemName}>
@@ -33,13 +33,7 @@ const ContactList = ({ contacts, navigate, refreshing, handleRefresh }) =>
             {item.email || "Pas encore d'adresse email"}
           </Text>
         </View>
-        <Ionicons
-          name="ios-arrow-forward"
-          size={32}
-          style={styles.icon}
-          color={colors.lightGrey}
-        />
-      </TouchableOpacity>}
+      </NavigationItem>}
   />;
 
 ContactList.propTypes = {
@@ -49,34 +43,16 @@ ContactList.propTypes = {
 export default ContactList;
 
 const styles = StyleSheet.create({
+  text: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
   itemName: {
     fontSize: 20,
   },
   itemEmail: {
     fontSize: 18,
     color: 'gray',
-  },
-  itemView: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: 96,
-    margin: 8,
-    marginBottom: 0,
-    marginTop: 8,
-    padding: 16,
-    borderRadius: 8,
-  },
-  text: {
-    height: '100%',
-    flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'space-between',
-  },
-  icon: {
-    marginRight: 8,
   },
   itemMeal: {
     fontSize: 18,

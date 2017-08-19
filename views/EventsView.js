@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import NavigationItem from '../components/NavigationItem';
 
 const EventsView = ({ events, navigation, refreshing, handleRefresh }) => {
   return (
@@ -17,14 +18,15 @@ const EventsView = ({ events, navigation, refreshing, handleRefresh }) => {
         data={events}
         keyExtractor={event => event.id}
         renderItem={({ item }) =>
-          <TouchableOpacity
-            style={styles.item}
-            onPress={() => navigation.navigate('SingleEventView', { ...item })}
+          <NavigationItem
+            handlePress={() =>
+              navigation.navigate('SingleEventView', { ...item })}
+            height={64}
           >
             <Text style={styles.itemText}>
-              {item.name}
+              Repas {item.name}
             </Text>
-          </TouchableOpacity>}
+          </NavigationItem>}
       />
     </View>
   );
@@ -38,12 +40,6 @@ EventsView.propTypes = {
 const styles = StyleSheet.create({
   view: {
     height: '100%',
-  },
-  item: {
-    height: 40,
-    paddingLeft: 20,
-    flex: 1,
-    justifyContent: 'center',
   },
   itemText: {
     fontSize: 20,

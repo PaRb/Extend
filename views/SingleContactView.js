@@ -11,6 +11,7 @@ import {
 import ContactText from '../components/ContactText';
 import ContactForm from '../components/ContactForm';
 import MealToggler from '../components/MealToggler';
+import Button from '../components/Button';
 
 import { modifyContact } from '../api/contacts';
 
@@ -50,9 +51,7 @@ export default class SingleContactView extends Component {
               contactDetail={contactDetail}
               navigation={this.props.navigation}
             />}
-        <TouchableOpacity style={styles.button} onPress={this.showForm}>
-          <Text style={styles.buttonText}>Switch</Text>
-        </TouchableOpacity>
+        <Button handlePress={this.showForm} label="Switch" />
         <MealToggler />
       </ScrollView>
     );
