@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Modal } from 'react-native';
 import { getMealGroups, addMeal } from '../api/contacts';
 
+import Loading from './Loading';
 import Button from './Button';
 
 export default class MealAdderModal extends Component {
@@ -39,11 +40,11 @@ export default class MealAdderModal extends Component {
       >
         <View style={styles.modalContainer}>
           <View style={styles.modal}>
-            <Text style={styles.info}>
-              {lastMeal
-                ? 'Ceci créera le repas #' + (lastMeal + 1)
-                : 'Loading...'}
-            </Text>
+            {lastMeal
+              ? <Text style={styles.info}>
+                  {'Ceci créera le repas #' + (lastMeal + 1)}
+                </Text>
+              : <Loading />}
             <View style={styles.buttons}>
               <Button handlePress={closeModal} label="Annuler" />
               <Button handlePress={this.addMeal} label="Go" primary />

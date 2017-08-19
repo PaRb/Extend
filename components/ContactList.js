@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import colors from '../config/colors';
 
@@ -15,15 +22,23 @@ const ContactList = ({ contacts, navigate, refreshing, handleRefresh }) =>
         style={styles.itemView}
         onPress={() => navigate('SingleContactView', { ...item })}
       >
-        <Text style={styles.itemName}>
-          {item.firstName || 'Prénom'} {item.lastName || 'Nom'}
-        </Text>
-        <Text style={styles.itemMeal}>
-          {item.meal || 'Pas encore assigné'}
-        </Text>
-        <Text style={styles.itemEmail}>
-          {item.email || "Pas encore d'adresse email"}
-        </Text>
+        <View style={styles.text}>
+          <Text style={styles.itemName}>
+            {item.firstName || 'Prénom'} {item.lastName || 'Nom'}
+          </Text>
+          <Text style={styles.itemMeal}>
+            {item.meal || 'Pas encore assigné'}
+          </Text>
+          <Text style={styles.itemEmail}>
+            {item.email || "Pas encore d'adresse email"}
+          </Text>
+        </View>
+        <Ionicons
+          name="ios-arrow-forward"
+          size={32}
+          style={styles.icon}
+          color={colors.lightGrey}
+        />
       </TouchableOpacity>}
   />;
 
@@ -43,12 +58,25 @@ const styles = StyleSheet.create({
   },
   itemView: {
     flex: 1,
+    flexDirection: 'row',
     backgroundColor: 'white',
-    borderBottomColor: colors.lightGrey,
-    borderBottomWidth: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     height: 96,
-    padding: 10,
+    margin: 8,
+    marginBottom: 0,
+    marginTop: 8,
+    padding: 16,
+    borderRadius: 8,
+  },
+  text: {
+    height: '100%',
+    flex: 1,
+    backgroundColor: 'white',
+    justifyContent: 'space-between',
+  },
+  icon: {
+    marginRight: 8,
   },
   itemMeal: {
     fontSize: 18,

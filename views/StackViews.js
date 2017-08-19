@@ -1,3 +1,4 @@
+import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { StyleSheet } from 'react-native';
 
@@ -6,6 +7,7 @@ import ContactsContainer from '../containers/ContactsContainer';
 import SingleEventContainer from '../containers/SingleEventContainer';
 import SingleContactContainer from '../containers/SingleContactContainer';
 import SettingsView from './SettingsView';
+import SearchButton from '../components/SearchButton';
 
 import colors from '../config/colors';
 
@@ -56,9 +58,21 @@ const stacks = {
   },
   ContactsView: {
     screen: ContactsContainer,
-    navigationOptions: {
-      title: 'Contacts',
-      ...navigatorConfig,
+    navigationOptions: ({ navigation }) => {
+      const { state, setParams } = navigation;
+      const { params } = state;
+      return {
+        title: 'Contacts',
+        headerRight: (
+          <SearchButton
+            handlePress={() =>
+              setParams({
+                mode: params && params.mode === 'edit' ? '' : 'edit',
+              })}
+          />
+        ),
+        ...navigatorConfig,
+      };
     },
   },
   SettingsView: {

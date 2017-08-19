@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
+import Loading from './Loading';
+
 const keysToShow = ['id', 'email', 'firstName', 'lastName'];
 
 const ContactText = ({ contactDetail, navigation }) => {
@@ -34,7 +36,7 @@ const ContactText = ({ contactDetail, navigation }) => {
               )}
             </View>
           : <Text style={styles.itemContent}>Pas de repas!</Text>
-        : <Text style={styles.itemContent}>Loading...</Text>}
+        : <Loading fullScreen={false} />}
     </View>
   );
 };
