@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 
-import AddContactForm from './AddContactForm.js';
+import AddContactForm from './AddContactForm';
+import Button from './Button';
 import { addContact } from '../api/contacts';
 
 export default class ModalComponents extends Component {
@@ -19,8 +20,8 @@ export default class ModalComponents extends Component {
           />
         </View>
         <View style={styles.buttonsView}>
-          <TouchableOpacity
-            onPress={() => {
+          <Button
+            handlePress={() => {
               addContact({ email })
                 .then(result => {
                   closeModal();
@@ -31,19 +32,15 @@ export default class ModalComponents extends Component {
                   navigate('SingleContactView', { ...result });
                 });
             }}
-            style={styles.addButton}
-          >
-            <Text style={styles.buttonText}> Add </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
+            label="Add"
+          />
+          <Button
+            handlePress={() => {
               closeModal();
               setEmail('');
             }}
-            style={styles.cancelButton}
-          >
-            <Text style={styles.buttonText}> Cancel </Text>
-          </TouchableOpacity>
+            label="Cancel"
+          />
         </View>
       </View>
     );
@@ -54,12 +51,13 @@ const styles = StyleSheet.create({
   modalView: {
     padding: 10,
     position: 'absolute',
-    flex: 1,
+    flex: 0,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
-    height: '100%',
+    height: '50%',
+    top: '25%',
   },
   formView: {
     flex: 1,
@@ -69,9 +67,10 @@ const styles = StyleSheet.create({
     height: '50%',
   },
   buttonsView: {
-    flex: 1,
+    flex: 0,
     flexDirection: 'row',
-    height: '50%',
+    justifyContent: 'flex-end',
+    width: '100%',
   },
   addContactForm: {
     alignItems: 'center',

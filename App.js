@@ -3,6 +3,7 @@ import { TabNavigator } from 'react-navigation';
 import ContactsApp from './views/ContactsApp';
 import EventsApp from './views/EventsApp';
 import SettingsApp from './views/SettingsApp';
+import colors from './config/colors';
 
 const App = TabNavigator(
   {
@@ -14,7 +15,7 @@ const App = TabNavigator(
     swipeEnabled: true,
     animationEnabled: true,
     tabBarOptions: {
-      activeTintColor: '#e91e63',
+      activeTintColor: colors.primary,
     },
   },
 );

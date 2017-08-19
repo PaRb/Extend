@@ -1,14 +1,9 @@
 import { StackNavigator } from 'react-navigation';
 
-import SettingsView from './SettingsView';
+import StackViews from './StackViews';
 
 const SettingsApp = StackNavigator({
-  ContactsView: {
-    screen: SettingsView,
-    navigationOptions: {
-      title: 'Settings',
-    },
-  },
+  SettingsView: StackViews.SettingsView,
 });
 
 export default SettingsApp;

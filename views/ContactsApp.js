@@ -1,28 +1,11 @@
 import { StackNavigator } from 'react-navigation';
 
-import ContactsContainer from '../containers/ContactsContainer';
-import SingleContactContainer from '../containers/SingleContactContainer';
-import SingleEventContainer from '../containers/SingleEventContainer';
+import stacks from './StackViews';
 
 const ContactsApp = StackNavigator({
-  ContactsView: {
-    screen: ContactsContainer,
-    navigationOptions: {
-      title: 'Contacts',
-    },
-  },
-  SingleContactView: {
-    screen: SingleContactContainer,
-    navigationOptions: ({ navigation }) => ({
-      title: "Quelqu'un",
-    }),
-  },
-  SingleEventView: {
-    screen: SingleEventContainer,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Repas ' + navigation.state.params.name,
-    }),
-  },
+  ContactsView: stacks.ContactsView,
+  SingleContactView: stacks.SingleContactView,
+  SingleEventView: stacks.SingleEventView,
 });
 
 export default ContactsApp;

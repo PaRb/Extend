@@ -1,28 +1,12 @@
 import { StackNavigator } from 'react-navigation';
+import { StyleSheet } from 'react-native';
 
-import EventsContainer from '../containers/EventsContainer';
-import SingleEventContainer from '../containers/SingleEventContainer';
-import SingleContactContainer from '../containers/SingleContactContainer';
+import stacks from './StackViews';
 
 const EventsApp = StackNavigator({
-  EventsView: {
-    screen: EventsContainer,
-    navigationOptions: {
-      title: 'Events',
-    },
-  },
-  SingleEventView: {
-    screen: SingleEventContainer,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Repas ' + navigation.state.params.name,
-    }),
-  },
-  SingleContactView: {
-    screen: SingleContactContainer,
-    navigationOptions: ({ navigation }) => ({
-      title: "Quelqu'un",
-    }),
-  },
+  EventsView: stacks.EventsView,
+  SingleEventView: stacks.SingleEventView,
+  SingleContactView: stacks.SingleContactView,
 });
 
 export default EventsApp;

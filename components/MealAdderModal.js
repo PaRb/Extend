@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Modal } from 'react-native';
 import { getMealGroups, addMeal } from '../api/contacts';
 
+import Button from './Button';
+
 export default class MealAdderModal extends Component {
   constructor(props) {
     super(props);
@@ -43,18 +45,8 @@ export default class MealAdderModal extends Component {
                 : 'Loading...'}
             </Text>
             <View style={styles.buttons}>
-              <TouchableOpacity
-                style={styles.cancelButton}
-                onPress={closeModal}
-              >
-                <Text style={styles.cancelText}>Annuler</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.acceptButton}
-                onPress={this.addMeal}
-              >
-                <Text style={styles.cancelText}>Go</Text>
-              </TouchableOpacity>
+              <Button handlePress={closeModal} label="Annuler" />
+              <Button handlePress={this.addMeal} label="Go" primary />
             </View>
           </View>
         </View>
@@ -69,6 +61,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 10,
   },
   modal: {
     width: 300,
@@ -82,24 +75,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   buttons: {
-    height: 100,
     flex: 0,
     flexDirection: 'row',
-  },
-  cancelButton: {
-    padding: 20,
-    backgroundColor: 'grey',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  acceptButton: {
-    padding: 20,
-    backgroundColor: 'green',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  cancelText: {
-    fontSize: 24,
-    height: 40,
+    justifyContent: 'flex-end',
   },
 });
