@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
+
 import AddContactButton from '../components/AddContactButton.js';
 import ContactList from '../components/ContactList.js';
 import AddContactModal from '../components/AddContactModal.js';

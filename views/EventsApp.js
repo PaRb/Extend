@@ -1,12 +1,12 @@
 import { StackNavigator } from 'react-navigation';
 import { StyleSheet } from 'react-native';
 
-import stacks from './StackViews';
+import StackViews from './StackViews';
 
 const EventsApp = StackNavigator({
-  EventsView: stacks.EventsView,
-  SingleEventView: stacks.SingleEventView,
-  SingleContactView: stacks.SingleContactView,
+  EventsView: StackViews.EventsView,
+  SingleEventView: StackViews.SingleEventView,
+  SingleContactView: StackViews.SingleContactView,
 });
 
 export default EventsApp;
