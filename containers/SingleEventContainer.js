@@ -19,12 +19,12 @@ export default class SingleEventContainer extends Component {
   fetchEvent = () => {
     const id = this.props.navigation.state.params.id;
     getMeal(id)
-      .then(result => {
-        this.setState({ event: result });
-        return result;
+      .then(meal => {
+        this.setState({ event: meal });
+        return meal;
       })
-      .then(result => getContactsByMeal(result.id))
-      .then(result => this.setState({ members: result }));
+      .then(meal => getContactsByMeal(meal.id))
+      .then(members => this.setState({ members }));
   };
 
   render() {
