@@ -64,12 +64,7 @@ const stacks = {
       return {
         title: 'Contacts',
         headerRight: (
-          <SearchButton
-            handlePress={() =>
-              setParams({
-                mode: params && params.mode === 'edit' ? '' : 'edit',
-              })}
-          />
+          <SearchButton handlePress={() => setParams({ showModal: true })} />
         ),
         ...navigatorConfig,
       };

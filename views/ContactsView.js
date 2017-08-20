@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import AddContactButton from '../components/AddContactButton.js';
 import ContactList from '../components/ContactList.js';
 import AddContactModal from '../components/AddContactModal.js';
+import SearchModal from '../components/SearchModal.js';
 
 export default class ContactsView extends Component {
   constructor(props) {
@@ -14,9 +15,13 @@ export default class ContactsView extends Component {
   showModal = () => this.setState({ isModalVisible: true });
   closeModal = () => this.setState({ isModalVisible: false });
 
+  setSearch = search => this.setState({ search });
+
   render() {
-    const { navigate } = this.props.navigation;
     const { refreshing, handleRefresh, contacts } = this.props;
+    const { navigation } = this.props;
+    const { state, setParams, navigate } = navigation;
+    const { params } = state;
     return (
       <View style={styles.container}>
         <ContactList
@@ -30,6 +35,11 @@ export default class ContactsView extends Component {
           navigate={navigate}
           isModalVisible={this.state.isModalVisible}
           closeModal={this.closeModal}
+        />
+        <SearchModal
+          showModal={!!(params && params.showModal)}
+          setParams={setParams}
+          setSearch={this.setSearch}
         />
       </View>
     );

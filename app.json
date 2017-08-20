@@ -11,7 +11,7 @@
     "loading": {
       "icon": "assets/icon.png",
       "backgroundColor": "#FEFDD7",
-      "hideExponentText": true,
+      "hideExponentText": false,
       "splash": {
         "backgroundColor": "#FEFDD7",
         "image": {
@@ -22,6 +22,11 @@
       }
     },
     "androidStatusBarColor": "#58C9B9",
-    "ios": {}
+    "ios": {
+      "bundleIdentifier": "com.horizons.app"
+    },
+    "android": {
+      "package": "com.horizons.app"
+    }
   }
 }
