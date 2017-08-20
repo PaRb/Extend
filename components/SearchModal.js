@@ -21,6 +21,11 @@ export default class SearchModal extends Component {
   componentWillReceiveProps({ showModal }) {
     if (showModal !== this.props.showModal) {
       this.setState({ isOpen: showModal });
+
+      if (showModal) {
+        // Make sure the textinput is up to date with the parent
+        this.setState({ search: this.props.currentSearch });
+      }
     }
   }
 
@@ -50,8 +55,12 @@ export default class SearchModal extends Component {
             <TextInput
               value={search}
               onChangeText={this.handleChange}
+              onSubmitEditing={this.handleSearch}
               style={styles.input}
               placeholder="Recherche..."
+              autoFocus
+              returnKeyType="search"
+              clearButtonMode="always"
             />
             <View style={styles.buttons}>
               <Button handlePress={this.closeModal} label="Cancel" />

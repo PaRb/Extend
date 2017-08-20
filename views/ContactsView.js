@@ -9,15 +9,13 @@ import SearchModal from '../components/SearchModal.js';
 export default class ContactsView extends Component {
   constructor(props) {
     super(props);
-    this.state = { isModalVisible: false };
+    this.state = { isModalVisible: false, search: '' };
   }
 
   showModal = () => this.setState({ isModalVisible: true });
   closeModal = () => this.setState({ isModalVisible: false });
 
-  setSearch = search => {
-    this.setState({ search });
-  };
+  setSearch = search => this.setState({ search });
 
   getContacts = () => {
     const { search } = this.state;
@@ -26,14 +24,18 @@ export default class ContactsView extends Component {
     if (!search) {
       return contacts;
     } else {
-      // TODO: implement search logic
-      return contacts;
+      return contacts.filter(
+        ({ firstName, lastName, email }) =>
+          firstName.indexOf(search) >= 0 ||
+          lastName.indexOf(search) >= 0 ||
+          email.indexOf(search) >= 0,
+      );
     }
   };
 
   render() {
-    const { refreshing, handleRefresh } = this.props;
-    const { navigation } = this.props;
+    const { search, isModalVisible } = this.state;
+    const { refreshing, handleRefresh, navigation } = this.props;
     const { state, setParams, navigate } = navigation;
     const { params } = state;
 
@@ -48,13 +50,14 @@ export default class ContactsView extends Component {
         <AddContactButton handlePress={this.showModal} />
         <AddContactModal
           navigate={navigate}
-          isModalVisible={this.state.isModalVisible}
+          isModalVisible={isModalVisible}
           closeModal={this.closeModal}
         />
         <SearchModal
           showModal={!!(params && params.showModal)}
           setParams={setParams}
           setSearch={this.setSearch}
+          currentSearch={search}
         />
       </View>
     );
