@@ -1,17 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import { ScrollView, Text, StyleSheet } from "react-native";
 
-import NavigationItem from '../components/NavigationItem';
-import Loading from '../components/Loading';
+import NavigationItem from "../components/NavigationItem";
+import Loading from "../components/Loading";
 
-const SingleEventView = ({ event, members, navigation }) => {
+const SingleEventView = ({ members, navigation }) => {
   return (
     <ScrollView style={styles.view}>
       {members
@@ -20,7 +14,7 @@ const SingleEventView = ({ event, members, navigation }) => {
               <NavigationItem
                 key={member.id}
                 handlePress={() =>
-                  navigation.navigate('SingleContactView', { ...member })}
+                  navigation.navigate("SingleContactView", { ...member })}
                 height={64}
               >
                 <Text style={styles.member}>
@@ -38,15 +32,11 @@ const styles = StyleSheet.create({
   view: {
     flex: 1,
   },
-  title: {
-    fontSize: 32,
-    padding: 16,
-  },
   member: {
     fontSize: 20,
   },
   empty: {
-    alignSelf: 'center',
+    alignSelf: "center",
     fontSize: 24,
     padding: 16,
   },

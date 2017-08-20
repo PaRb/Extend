@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
-import colors from '../config/colors';
+import colors from "../config/colors";
 
 const NavigationItem = ({ handlePress, children, height }) => {
   return (
@@ -30,10 +30,10 @@ NavigationItem.propTypes = {};
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    backgroundColor: "white",
+    justifyContent: "space-between",
+    alignItems: "center",
     height: 96,
     margin: 8,
     marginBottom: 0,
@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   text: {
-    height: '100%',
+    height: "100%",
     flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
+    backgroundColor: "white",
+    justifyContent: "center",
   },
   icon: {
     marginRight: 8,

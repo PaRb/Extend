@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import AddContactForm from "./AddContactForm";
 import Button from "./Button";
@@ -88,21 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    fontSize: 24,
-  },
-  addButton: {
-    width: "50%",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "green",
-  },
-  cancelButton: {
-    width: "50%",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "red",
-  },
-  buttonText: {
     fontSize: 24,
   },
 });

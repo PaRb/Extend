@@ -1,25 +1,24 @@
-import React from 'react';
-import { StackNavigator } from 'react-navigation';
-import { StyleSheet } from 'react-native';
+import React from "react";
+import { StyleSheet } from "react-native";
 
-import EventsContainer from '../containers/EventsContainer';
-import ContactsContainer from '../containers/ContactsContainer';
-import SingleEventContainer from '../containers/SingleEventContainer';
-import SingleContactContainer from '../containers/SingleContactContainer';
-import SettingsView from './SettingsView';
-import SearchButton from '../components/SearchButton';
+import EventsContainer from "../containers/EventsContainer";
+import ContactsContainer from "../containers/ContactsContainer";
+import SingleEventContainer from "../containers/SingleEventContainer";
+import SingleContactContainer from "../containers/SingleContactContainer";
+import SettingsView from "./SettingsView";
+import SearchButton from "../components/SearchButton";
 
-import colors from '../config/colors';
+import colors from "../config/colors";
 
 const styles = StyleSheet.create({
   header: {
     backgroundColor: colors.primary,
   },
   headerTitle: {
-    color: 'white',
+    color: "white",
   },
   headerBack: {
-    color: 'white',
+    color: "white",
   },
 });
 
@@ -27,7 +26,7 @@ const navigatorConfig = {
   headerStyle: styles.header,
   headerTitleStyle: styles.headerTitle,
   headerBackTitleStyle: styles.headerBack,
-  headerTintColor: 'white',
+  headerTintColor: "white",
   gesturesEnabled: true,
 };
 
@@ -35,14 +34,14 @@ const stacks = {
   EventsView: {
     screen: EventsContainer,
     navigationOptions: {
-      title: 'Events',
+      title: "Events",
       ...navigatorConfig,
     },
   },
   SingleEventView: {
     screen: SingleEventContainer,
     navigationOptions: ({ navigation }) => ({
-      title: 'Repas ' + navigation.state.params.name,
+      title: "Repas " + navigation.state.params.name,
       ...navigatorConfig,
     }),
   },
@@ -51,7 +50,7 @@ const stacks = {
     navigationOptions: ({ navigation }) => ({
       title:
         navigation.state.params.firstName +
-        ' ' +
+        " " +
         navigation.state.params.lastName,
       ...navigatorConfig,
     }),
@@ -62,7 +61,7 @@ const stacks = {
       const { state, setParams } = navigation;
       const { params } = state;
       return {
-        title: 'Contacts',
+        title: "Contacts",
         headerRight: (
           <SearchButton handlePress={() => setParams({ showModal: true })} />
         ),
@@ -73,7 +72,7 @@ const stacks = {
   SettingsView: {
     screen: SettingsView,
     navigationOptions: {
-      title: 'Settings',
+      title: "Settings",
       ...navigatorConfig,
     },
   },

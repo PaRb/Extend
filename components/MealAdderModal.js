@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { View, StyleSheet, Text, TouchableOpacity, Modal } from 'react-native';
-import { getMealGroups, addMeal } from '../api/contacts';
+import { View, StyleSheet, Text, Modal } from "react-native";
+import { getMealGroups, addMeal } from "../api/contacts";
 
-import Loading from './Loading';
-import Button from './Button';
+import Loading from "./Loading";
+import Button from "./Button";
 
 export default class MealAdderModal extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { lastMeal: '' };
+    this.state = { lastMeal: "" };
   }
 
   componentDidMount() {
@@ -21,7 +21,7 @@ export default class MealAdderModal extends Component {
   }
 
   addMeal = () => {
-    addMeal('#' + (this.state.lastMeal + 1))
+    addMeal("#" + (this.state.lastMeal + 1))
       .then(console.log)
       .catch(console.log);
     this.props.closeModal();
@@ -42,7 +42,7 @@ export default class MealAdderModal extends Component {
           <View style={styles.modal}>
             {lastMeal
               ? <Text style={styles.info}>
-                  {'Ceci créera le repas #' + (lastMeal + 1)}
+                  {"Ceci créera le repas #" + (lastMeal + 1)}
                 </Text>
               : <Loading />}
             <View style={styles.buttons}>
@@ -59,17 +59,17 @@ export default class MealAdderModal extends Component {
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 10,
   },
   modal: {
     width: 300,
     height: 300,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     flex: 0,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   info: {
     fontSize: 24,
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     flex: 0,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    flexDirection: "row",
+    justifyContent: "flex-end",
   },
 });

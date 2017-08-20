@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { Text } from 'react-native';
+import React, { Component } from "react";
 
-import Loading from '../components/Loading';
-import SingleEventView from '../views/SingleEventView';
-import { getMeal, getContactsByMeal } from '../api/contacts';
+import Loading from "../components/Loading";
+import SingleEventView from "../views/SingleEventView";
+import { getMeal, getContactsByMeal } from "../api/contacts";
 
 export default class SingleEventContainer extends Component {
   constructor(props) {

@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { Text } from 'react-native';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import Loading from '../components/Loading';
-import SingleContactView from '../views/SingleContactView.js';
-import { getContactById, getMealsForContact } from '../api/contacts';
+import Loading from "../components/Loading";
+import SingleContactView from "../views/SingleContactView.js";
+import { getContactById, getMealsForContact } from "../api/contacts";
 
 export default class SingleContactContainer extends Component {
   constructor(props) {

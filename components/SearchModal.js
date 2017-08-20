@@ -1,21 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import {
-  View,
-  TouchableOpacity,
-  Text,
-  Modal,
-  StyleSheet,
-  TextInput,
-} from 'react-native';
+import { View, Text, Modal, StyleSheet, TextInput } from "react-native";
 
-import Button from './Button';
+import Button from "./Button";
 
 export default class SearchModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { isOpen: false, search: '' };
+    this.state = { isOpen: false, search: "" };
   }
 
   componentWillReceiveProps({ showModal }) {
@@ -82,15 +75,15 @@ SearchModal.propTypes = {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: "rgba(0,0,0,0.3)",
   },
   modal: {
     paddingTop: 16,
     flex: 0,
-    backgroundColor: 'white',
-    height: '40%',
-    width: '100%',
-    justifyContent: 'space-between',
+    backgroundColor: "white",
+    height: "40%",
+    width: "100%",
+    justifyContent: "space-between",
     borderRadius: 8,
   },
   title: {
@@ -102,11 +95,11 @@ const styles = StyleSheet.create({
     padding: 16,
     fontSize: 20,
     borderWidth: 1,
-    borderColor: 'grey',
+    borderColor: "grey",
   },
   buttons: {
     flex: 0,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    flexDirection: "row",
+    justifyContent: "flex-end",
   },
 });
