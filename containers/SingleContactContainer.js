@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { Text } from 'react-native';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import Loading from '../components/Loading';
 import { getContactById, getMealsForContact } from '../api/contacts';

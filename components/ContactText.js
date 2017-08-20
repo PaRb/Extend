@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, Text, View } from "react-native";
 
-import Loading from './Loading';
-import NavigationItem from './NavigationItem';
+import Loading from "./Loading";
+import NavigationItem from "./NavigationItem";
 
-const keysToShow = ['id', 'email', 'firstName', 'lastName'];
+const keysToShow = ["id", "email", "firstName", "lastName"];
 
 const ContactText = ({ contactDetail, navigation }) => {
   return (
@@ -28,7 +28,7 @@ const ContactText = ({ contactDetail, navigation }) => {
                 <NavigationItem
                   key={meal.id}
                   handlePress={() =>
-                    navigation.navigate('SingleEventView', { ...meal })}
+                    navigation.navigate("SingleEventView", { ...meal })}
                   height={64}
                 >
                   <Text style={styles.meal}>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   itemLabel: {
     padding: 8,
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   itemContent: {
     fontSize: 18,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     flex: 1,
     padding: 16,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   meals: {
     flex: 0,

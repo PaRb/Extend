@@ -1,20 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import {
-  ScrollView,
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { ScrollView, Text, StyleSheet } from "react-native";
 
-import ContactText from '../components/ContactText';
-import ContactForm from '../components/ContactForm';
-import MealToggler from '../components/MealToggler';
-import Button from '../components/Button';
-import NavigationItem from '../components/NavigationItem';
+import ContactText from "../components/ContactText";
+import ContactForm from "../components/ContactForm";
+import MealToggler from "../components/MealToggler";
+import Button from "../components/Button";
+import NavigationItem from "../components/NavigationItem";
 
-import { modifyContact } from '../api/contacts';
+import { modifyContact } from "../api/contacts";
 
 export default class SingleContactView extends Component {
   constructor(props) {
@@ -72,18 +66,7 @@ export default class SingleContactView extends Component {
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    overflow: 'scroll',
-  },
-  button: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: 40,
-  },
-  buttonText: {
-    fontSize: 20,
-    padding: 20,
+    overflow: "scroll",
   },
 });
 

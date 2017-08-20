@@ -1,13 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
-import NavigationItem from '../components/NavigationItem';
+import React from "react";
+import PropTypes from "prop-types";
+import { View, Text, FlatList, StyleSheet } from "react-native";
+import NavigationItem from "../components/NavigationItem";
 
 const EventsView = ({ events, navigation, refreshing, handleRefresh }) => {
   return (
@@ -20,7 +14,7 @@ const EventsView = ({ events, navigation, refreshing, handleRefresh }) => {
         renderItem={({ item }) =>
           <NavigationItem
             handlePress={() =>
-              navigation.navigate('SingleEventView', { ...item })}
+              navigation.navigate("SingleEventView", { ...item })}
             height={64}
           >
             <Text style={styles.itemText}>
@@ -39,7 +33,7 @@ EventsView.propTypes = {
 
 const styles = StyleSheet.create({
   view: {
-    height: '100%',
+    height: "100%",
   },
   itemText: {
     fontSize: 20,

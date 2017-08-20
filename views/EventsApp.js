@@ -1,7 +1,5 @@
-import { StackNavigator } from 'react-navigation';
-import { StyleSheet } from 'react-native';
-
-import StackViews from './StackViews';
+import { StackNavigator } from "react-navigation";
+import StackViews from "./StackViews";
 
 const EventsApp = StackNavigator({
   EventsView: StackViews.EventsView,

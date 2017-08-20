@@ -1,16 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+import PropTypes from "prop-types";
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
-import colors from '../config/colors';
-import NavigationItem from './NavigationItem';
+import colors from "../config/colors";
+import NavigationItem from "./NavigationItem";
 
 const ContactList = ({ contacts, navigate, refreshing, handleRefresh }) =>
   <FlatList
@@ -20,14 +14,11 @@ const ContactList = ({ contacts, navigate, refreshing, handleRefresh }) =>
     onRefresh={handleRefresh}
     renderItem={({ item }) =>
       <NavigationItem
-        handlePress={() => navigate('SingleContactView', { ...item })}
+        handlePress={() => navigate("SingleContactView", { ...item })}
       >
         <View style={styles.text}>
           <Text style={styles.itemName}>
-            {item.firstName || 'Prénom'} {item.lastName || 'Nom'}
-          </Text>
-          <Text style={styles.itemMeal}>
-            {item.meal || 'Pas encore assigné'}
+            {item.firstName || "Prénom"} {item.lastName || "Nom"}
           </Text>
           <Text style={styles.itemEmail}>
             {item.email || "Pas encore d'adresse email"}
@@ -44,19 +35,16 @@ export default ContactList;
 
 const styles = StyleSheet.create({
   text: {
-    height: '100%',
+    height: "100%",
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   itemName: {
     fontSize: 20,
+    fontWeight: "bold",
   },
   itemEmail: {
     fontSize: 18,
-    color: 'gray',
-  },
-  itemMeal: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    color: "gray",
   },
 });
