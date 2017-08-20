@@ -22,9 +22,8 @@ const SingleEventContainer = WrappedComponent =>
       getMeal(id)
         .then(meal => {
           this.setState({ event: meal });
-          return meal;
+          return getContactsByMeal(meal.id);
         })
-        .then(meal => getContactsByMeal(meal.id))
         .then(members => this.setState({ members }));
     };
 

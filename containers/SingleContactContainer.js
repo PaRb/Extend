@@ -19,7 +19,7 @@ const SingleContactContainer = WrappedComponent =>
       this.fetchContact();
     }
 
-    fetchContact = () => {
+    fetchContact = callback => {
       const id = this.props.navigation.state.params.id;
       getContactById(id)
         .then(result => {
@@ -28,17 +28,25 @@ const SingleContactContainer = WrappedComponent =>
         })
         .then(contact => getMealsForContact(contact))
         .then(result =>
-          this.setState(prev => ({
-            contactDetail: { ...prev.contactDetail, meals: result },
-          })),
+          this.setState(
+            prev => ({
+              contactDetail: { ...prev.contactDetail, meals: result },
+            }),
+            () => {
+              if (typeof callback === 'function') {
+                callback();
+              }
+            },
+          ),
         );
     };
 
     render() {
-      return Object.keys(this.state.contactDetail).length > 0
+      const { contactDetail } = this.state;
+      return Object.keys(contactDetail).length > 0
         ? <WrappedComponent
             {...this.props}
-            contactDetail={this.state.contactDetail}
+            contactDetail={contactDetail}
             refreshContact={this.fetchContact}
           />
         : <Loading />;

@@ -6,6 +6,7 @@ const ContactsApp = StackNavigator({
   ContactsView: StackViews.ContactsView,
   SingleContactView: StackViews.SingleContactView,
   SingleEventView: StackViews.SingleEventView,
+  MealToggleView: StackViews.MealToggleView,
 });
 
 export default ContactsApp;

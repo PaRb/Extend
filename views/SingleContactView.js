@@ -37,7 +37,7 @@ export default class SingleContactView extends Component {
   };
 
   render() {
-    const { contactDetail, navigation } = this.props;
+    const { contactDetail, navigation, refreshContact } = this.props;
     const { showForm } = this.state;
 
     return (
@@ -56,7 +56,10 @@ export default class SingleContactView extends Component {
 
         <NavigationItem
           handlePress={() =>
-            navigation.navigate('MealToggleView', { ...contactDetail })}
+            navigation.navigate('MealToggleView', {
+              ...contactDetail,
+              refreshContact,
+            })}
           height={64}
         >
           <Text>Meal Toggler</Text>

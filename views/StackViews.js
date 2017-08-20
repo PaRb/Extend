@@ -38,7 +38,7 @@ const navigatorConfig = {
   gesturesEnabled: true,
 };
 
-const stacks = {
+const StackViews = {
   EventsView: {
     screen: EventsContainer(EventsView),
     navigationOptions: {
@@ -85,7 +85,7 @@ const stacks = {
     },
   },
   MealToggleView: {
-    screen: MealToggleView,
+    screen: EventsContainer(MealToggleView),
     navigationOptions: {
       title: 'Choisir les repas',
       ...navigatorConfig,
@@ -93,4 +93,4 @@ const stacks = {
   },
 };
 
-export default stacks;
+export default StackViews;

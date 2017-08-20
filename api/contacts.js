@@ -68,6 +68,16 @@ export const toggleContactToMeal = (contactId, mealNo, nextValue = true) =>
       ),
     );
 
+export const toggleContactToMealId = (contactId, mealId, nextValue = true) =>
+  generateRequest(
+    '/lists/' + MAIN_LIST_ID + '/members/' + contactId,
+    'PATCH',
+    undefined,
+    {
+      interests: { [mealId]: nextValue },
+    },
+  );
+
 export const addContact = contact =>
   generateRequest('/lists/' + MAIN_LIST_ID + '/members', 'POST', undefined, {
     email_address: contact.email,
