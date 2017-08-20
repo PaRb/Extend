@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 2092,
-  "expoServerNgrokUrl": "https://mf-aeg.floriferous.extend.exp.direct",
-  "packagerNgrokUrl": "https://packager.mf-aeg.floriferous.extend.exp.direct",
-  "ngrokPid": 2109
+  "packagerPort": 19002,
+  "packagerPid": 6185,
+  "expoServerNgrokUrl": "https://mf-aeg.parb.extend.exp.direct",
+  "packagerNgrokUrl": "https://packager.mf-aeg.parb.extend.exp.direct",
+  "ngrokPid": 1963
 }
