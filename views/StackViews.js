@@ -1,12 +1,19 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 
-import EventsContainer from "../containers/EventsContainer";
-import ContactsContainer from "../containers/ContactsContainer";
-import SingleEventContainer from "../containers/SingleEventContainer";
-import SingleContactContainer from "../containers/SingleContactContainer";
-import SettingsView from "./SettingsView";
-import SearchButton from "../components/SearchButton";
+import EventsContainer from '../containers/EventsContainer';
+import ContactsContainer from '../containers/ContactsContainer';
+import SingleEventContainer from '../containers/SingleEventContainer';
+import SingleContactContainer from '../containers/SingleContactContainer';
+
+import SettingsView from './SettingsView';
+import MealToggleView from './MealToggleView';
+import ContactsView from './ContactsView';
+import EventsView from './EventsView';
+import SingleContactView from './SingleContactView';
+import SingleEventView from './SingleEventView';
+
+import SearchButton from '../components/SearchButton';
 
 import colors from "../config/colors";
 
@@ -30,23 +37,23 @@ const navigatorConfig = {
   gesturesEnabled: true,
 };
 
-const stacks = {
+const StackViews = {
   EventsView: {
-    screen: EventsContainer,
+    screen: EventsContainer(EventsView),
     navigationOptions: {
       title: "Events",
       ...navigatorConfig,
     },
   },
   SingleEventView: {
-    screen: SingleEventContainer,
+    screen: SingleEventContainer(SingleEventView),
     navigationOptions: ({ navigation }) => ({
       title: "Repas " + navigation.state.params.name,
       ...navigatorConfig,
     }),
   },
   SingleContactView: {
-    screen: SingleContactContainer,
+    screen: SingleContactContainer(SingleContactView),
     navigationOptions: ({ navigation }) => ({
       title:
         navigation.state.params.firstName +
@@ -56,7 +63,7 @@ const stacks = {
     }),
   },
   ContactsView: {
-    screen: ContactsContainer,
+    screen: ContactsContainer(ContactsView),
     navigationOptions: ({ navigation }) => {
       const { state, setParams } = navigation;
       const { params } = state;
@@ -76,6 +83,13 @@ const stacks = {
       ...navigatorConfig,
     },
   },
+  MealToggleView: {
+    screen: EventsContainer(MealToggleView),
+    navigationOptions: {
+      title: 'Choisir les repas',
+      ...navigatorConfig,
+    },
+  },
 };
 
-export default stacks;
+export default StackViews;
