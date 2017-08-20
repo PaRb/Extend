@@ -15,17 +15,32 @@ export default class ContactsView extends Component {
   showModal = () => this.setState({ isModalVisible: true });
   closeModal = () => this.setState({ isModalVisible: false });
 
-  setSearch = search => this.setState({ search });
+  setSearch = search => {
+    this.setState({ search });
+  };
+
+  getContacts = () => {
+    const { search } = this.state;
+    const { contacts } = this.props;
+
+    if (!search) {
+      return contacts;
+    } else {
+      // TODO: implement search logic
+      return contacts;
+    }
+  };
 
   render() {
-    const { refreshing, handleRefresh, contacts } = this.props;
+    const { refreshing, handleRefresh } = this.props;
     const { navigation } = this.props;
     const { state, setParams, navigate } = navigation;
     const { params } = state;
+
     return (
       <View style={styles.container}>
         <ContactList
-          contacts={contacts}
+          contacts={this.getContacts()}
           navigate={navigate}
           refreshing={refreshing}
           handleRefresh={handleRefresh}
