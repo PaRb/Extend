@@ -39,6 +39,7 @@ const App = TabNavigator(
       activeTintColor: colors.primary,
     },
     lazy: true,
+    tabBarPosition: 'bottom',
   },
 );
 

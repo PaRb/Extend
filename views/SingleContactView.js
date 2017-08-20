@@ -37,7 +37,7 @@ export default class SingleContactView extends Component {
   };
 
   render() {
-    const { contactDetail } = this.props;
+    const { contactDetail, navigation } = this.props;
     const { showForm } = this.state;
 
     return (
@@ -50,7 +50,7 @@ export default class SingleContactView extends Component {
             />
           : <ContactText
               contactDetail={contactDetail}
-              navigation={this.props.navigation}
+              navigation={navigation}
             />}
         <Button handlePress={this.showForm} label="Toggle Form/Text" />
 
